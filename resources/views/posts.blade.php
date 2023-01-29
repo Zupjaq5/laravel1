@@ -8,7 +8,8 @@
 <body >
 
 <article>
-    <h1><a href="./post">First blog post</a></h1>
+
+    <h1><a href="/post">First blog post</a></h1>
 
     <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
@@ -30,7 +31,7 @@
 
 <article>
 
-    <h1><a href="./post">Secound blog post</a></h1>
+    <h1><a href="/post">Secound blog post</a></h1>
 
 <p>
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
@@ -48,7 +49,7 @@
 
 <article>
 
-    <h1><a href="./post">Third blog post</a></h1>
+    <h1><a href="/post">Third blog post</a></h1>
 
     <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,

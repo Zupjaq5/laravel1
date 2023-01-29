@@ -1,13 +1,18 @@
-<!DOCTYPE html>
-<title>My blog</title>
-<link rel="stylesheet" href="./app.css">
+<!
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <title>My blog</title>
+    <link rel="stylesheet" href="./app.css">
+</head>
 
-
-
-
-<body >
+<body>
 
 <article>
+
+    <h1><a href="/post">First blog post (post.blade)</a></h1>
+
     <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
         molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
@@ -18,8 +23,11 @@
         tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
         quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos
         sapiente officiis modi at sunt excepturi expedita sint?
+        asdasd
     </p>
 </article>
 
-<a href="./">Go Back</a>
+<a href="./">Back home</a>
+
 </body>
+</html>

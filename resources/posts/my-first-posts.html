@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>First post</title>
-    <link rel="stylesheet" href="./app.css">
+    <link rel="stylesheet" href="/../laravel/public/app.css">
 </head>
 <body>
 
 
 <article>
-    <h1><a href="./post">First blog post</a></h1>
+    <h1><a href="/post">x blog post</a></h1>
 
     <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
@@ -20,9 +20,15 @@
         nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
         tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
         quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos
-        sapiente officiis modi at sunt excepturi expedita sint?
+        sapiente officiis modi at sunt excepturi expedita
     </p>
 </article>
-
+<?php
+// converting the root directory path string into an array
+$path = explode(‘/’, $_SERVER[“DOCUMENT_ROOT”]);
+// printing the first element of the root directory path array
+ // output: C:
+?>
+<?php aasdasd ?>
 </body>
 </html>
