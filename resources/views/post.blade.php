@@ -1,19 +1,14 @@
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport">
-    <title>My blog</title>
-    <link rel="stylesheet" href="/app.css">php
-</head>
+@extends('layout')
+@section('content')
+    <h1> <a href="/posts/{{$post->slug}}  ">
+            {!! $post->title !!}
+        </a></h1>
+    <article>
 
-<body>
 
-<article>
-{!! $post !!}
 
-</article>
+        {!! $post->body !!}
+    </article>
 
-<a href="/">Back home</a>
-
-</body>
-</html>
+    <a href="/">Back home</a>
+@endsection

@@ -1,18 +1,25 @@
-<!DOCTYPE html>
-<title>My blog</title>
-<link rel="stylesheet" href="/app.css">
-<body >
-<?php foreach ($posts as $post) : ?>
-<article>
+@extends('layout')
 
-    <?= $post; ?>
+@section('content')
+    @foreach ($posts as $post)
+        <article class="{{$loop->even? 'foobar': ''}}">
 
-</article>
+            <h1>
 
-<?php endforeach; ?>
-
-
-</body>
+                <a href="/posts/<?= $post->slug; ?>">
+                    {!! $post->title !!}
+                </a>
 
 
+            </h1>
+
+
+            <div>
+                {{ $post->excerpt }}
+
+            </div>
+        </article>
+
+    @endforeach
+@endsection
 
