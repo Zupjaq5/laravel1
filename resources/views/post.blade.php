@@ -1,8 +1,8 @@
 @extends('layout')
 @section('content')
-    <h1> <a href="/posts/{{$post->slug}}  ">
+    <h1>
             {!! $post->title !!}
-        </a></h1>
+    </h1>
     <article>
 
 
