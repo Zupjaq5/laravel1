@@ -5,7 +5,9 @@
     </h1>
     <article>
 
-
+        <p>
+            <a href="/categories/{{$post->category->id}}">{{$post->category->name}}</a>
+        </p>
 
         {!! $post->body !!}
     </article>
