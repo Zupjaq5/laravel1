@@ -10,6 +10,7 @@ class Post extends Model
 {
     use HasFactory;
 protected $guarded = [];
+protected $with = ['author','category'];
 //protected $fillable = ['title','excerpt','body'];
     public static function find($id)
     {
@@ -41,5 +42,10 @@ protected $guarded = [];
     public  function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public  function Author()
+    {
+        return $this->belongsTo(User::class,'user_id');
     }
 }

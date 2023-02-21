@@ -6,7 +6,7 @@
     <article>
 
         <p>
-            <a href="/categories/{{$post->category->id}}">{{$post->category->name}}</a>
+          By <a href="authors/{{$post->author->name}}">{{$post->author->name}}</a>  <a href="/categories/{{$post->category->slug}}">{{$post->category->name}}</a>
         </p>
 
         {!! $post->body !!}
