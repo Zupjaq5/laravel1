@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'username',
     ];
 
     /**
@@ -46,4 +47,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
+
+    /*
+    public function getUsernameAttribute($username)
+    {
+    return ucwords($username);    // $jane->username = 'janedoe' on page -> JaneDoe
+    }
+     */
 }
