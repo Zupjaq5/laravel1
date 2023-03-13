@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use PhpParser\Builder\Class_;
 
 class Post extends Model
 {
@@ -68,5 +69,10 @@ public function scopeFilter($query, array $filters) // Post::newQuery()->filter(
     public  function Author()
     {
         return $this->belongsTo(User::class,'user_id');
+    }
+
+    public  function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }
