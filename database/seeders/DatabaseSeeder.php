@@ -18,13 +18,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-       User::truncate();
-       Category::truncate();
-       Post::truncate();
+        User::factory(3)->create();
+        Category::factory(3)->create();
+        Post::factory(3)->create();
         User::factory(4)->create();
         Post::factory(16)->create();
         Category::factory(3)->create();
-Comment::factory(10)->create();
+        Comment::factory(10)->create();
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',

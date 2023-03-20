@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -19,11 +18,8 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->text('body');
             $table->timestamps();
-
-           // $table->foreign('post_id')->references('id')->on('posts')->cascadeOnDelete();//przy usunieciu posta usun komentarze
-          // $table->foreign('user_id')->references('id')->on('posts')->cascadeOnDelete();
-            $table->foreignId('post_id')->constrained()->cascadeOnDelete(); //przy usunieciu posta usun komentarze (uwaga na error z 2 id)
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreign('post_id')->references('id')->on('posts')->cascadeOnDelete();//przy usunieciu posta usun komentarze
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
         });
     }
 
