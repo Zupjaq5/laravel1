@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
 use App\Models\Category;
 use App\Models\Post;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
@@ -38,6 +39,8 @@ Route::post('login',[SessionController::class,'store'])->middleware('guest');
 
 Route::POST('newsletter', \App\Http\Controllers\NewsletterController::class);
 
+Route::get('admin/posts/create',[PostController::class,'create'])->middleware('admin');
+Route::post('admin/posts',[PostController::class,'store'])->middleware('admin');
 /*
   Route::get('categories/{category:slug}', function (Category $category) {
 
@@ -46,6 +49,9 @@ Route::POST('newsletter', \App\Http\Controllers\NewsletterController::class);
         'categories'=>Category::all()]);
 })->name('category'); // Post::Where('slug'->$post)->first();
 */
+Route::get('/linkstorage', function () {
+    Artisan::call('storage:link');
+});
 /*
 Route::get('authors/{author:name}', function (\App\Models\User $author) {
 
