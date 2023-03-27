@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PostController;
@@ -24,23 +25,33 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 */
 
 
-Route::get('/', [PostController::class,'index'])->name('home');
+Route::get('/', [PostController::class, 'index'])->name('home');
+Route::get('posts/{post:slug}', [PostController::class, 'show']); // Post::Where('slug'->$post)->first();
 
-Route::get('posts/{post:slug}',[PostController::class,'show']); // Post::Where('slug'->$post)->first();
-Route::post('posts/{post:slug}/comments',[CommentController::class,'addComment']);
+Route::post('posts/{post:slug}/comments', [CommentController::class, 'addComment']);
 
-Route::get('register',[RegisterController::class,'create'])->middleware('guest');
-Route::post('register',[RegisterController::class,'store'])->middleware('guest');
+Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
+Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
 
-Route::post('logout',[SessionController::class,'destroy'])->middleware('auth');
 
-Route::get('login',[SessionController::class,'create'])->middleware('guest');
-Route::post('login',[SessionController::class,'store'])->middleware('guest');
+Route::post('logout', [SessionController::class, 'destroy'])->middleware('auth');
+Route::get('login', [SessionController::class, 'create'])->middleware('guest');
+Route::post('login', [SessionController::class, 'store'])->middleware('guest');
 
-Route::POST('newsletter', \App\Http\Controllers\NewsletterController::class);
+Route::POST('newsletter', NewsletterController::class);
 
-Route::get('admin/posts/create',[PostController::class,'create'])->middleware('admin');
-Route::post('admin/posts',[PostController::class,'store'])->middleware('admin');
+Route::middleware('can:admin')->group(function (){
+    Route::get('admin/posts', [AdminPostController::class, 'index']);
+    Route::get('admin/posts/create', [AdminPostController::class, 'create']);
+    Route::get('admin/posts/{post:id}/edit', [AdminPostController::class, 'edit']);
+    Route::post('admin/posts', [AdminPostController::class, 'store']);
+    Route::patch('admin/posts/{post:id}', [AdminPostController::class, 'update']);
+    Route::delete('admin/posts/{post:id}', [AdminPostController::class, 'destroy']);
+
+
+});
+
+
 /*
   Route::get('categories/{category:slug}', function (Category $category) {
 

@@ -1,6 +1,6 @@
 <!doctype html>
 
-<title>Laravel From Scratch Blog</title>
+<title xmlns="http://www.w3.org/1999/html">Laravel From Scratch Blog</title>
 <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -21,13 +21,24 @@
 
         <div class="mt-8 md:mt-0 flex items-center">
             @auth
-                <span class="text-xs font-bold uppercase">Welcome, {{auth()->user()->name}}</span>
-                <form action="/logout" method="POST" class="text-xs font-semibold text-blue-500 ml-6">
-                    @csrf
+                <x-dropdown>
+                    <x-slot name="trigger">
+                        <button class="text-xs font-bold uppercase">Welcome, {{auth()->user()->name}}</button>
+                    </x-slot>
+                    {{--@can('admin') tez zadziala--}}
+                    @if(auth()->user()->can('admin'))
+                    <x-dropdown-item href="/admin/posts/create" :active="request()->routeIs('/admin/posts/create')">New Post</x-dropdown-item>
+                    <x-dropdown-item href="/admin/posts" :active="request()->routeIs('/admin/posts')">Dashboard</x-dropdown-item>
+                    @endif
 
-                    <button type="submit">Log Out</button>
+                    <x-dropdown-item href="#" x-data="{}" @click.prevent="document.querySelector('#logout-form').submit()" >Log out</x-dropdown-item>
+                    <form id="logout-form" action="/logout" method="POST" class="hidden">
+                        @csrf
 
-                </form>
+                    </form>
+                </x-dropdown>
+
+
 
             @else
                 <a href="/register" class="text-xs font-bold uppercase">Register</a>
